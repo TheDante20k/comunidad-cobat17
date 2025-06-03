@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comunidad Estudiantil COBAT 17</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #00bcd4, #8e24aa);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    header h2 {
+      font-size: 1.25rem;
+      font-weight: 300;
+      margin-top: 8px;
+      color: #dcdcdc;
+    }
+
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      width: 90%;
+      max-width: 1000px;
+      max-height: 65vh;
+      overflow-y: auto;
+      padding-bottom: 10px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 15px;
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      margin-bottom: 40px;
+    }
+
+    .event-info {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 20px 15px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .event-info:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .event-info img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .event-info h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #e0e0e0;
+    }
+
+    .event-info p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.4;
+      color: #ccc;
+    }
+
+    /* Tabla propuesta */
+
+    .table-container {
+      width: 90%;
+      max-width: 1000px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    thead tr {
+      background-color: #d35400; /* naranja intenso */
+      color: #fff;
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(211, 84, 0, 0.4); /* naranja claro */
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: rgba(211, 84, 0, 0.25); /* naranja más claro */
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #bbb;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Scrollbar styling for events container */
+    .events-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .events-container::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+    }
+
+    .events-container::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+    }
+
+    /* Responsive typography */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header h2 {
+        font-size: 1.1rem;
+      }
+      .event-info img {
+        height: 140px;
+      }
+      table {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      header h2 {
+        font-size: 1rem;
+      }
+      .event-info img {
+        height: 120px;
+      }
+      table {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Comunidad Estudiantil COBAT 17</h1>
+    <h2>Eventos y Actividades</h2>
+  </header>
+
+  <main class="events-container">
+    <section class="event-info">
+      <img src="Imagenes/Imagen historia fase 1.jpg" alt="8 de Marzo" />
+      <h3>Historia: Fase 1</h3>
+      <p>Se crea una tabla con los ingresos y gastos mensuales de cada integrante, mostrando cómo se administra el dinero.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen historia fase 2.jpg" alt="21 de Marzo" />
+      <h3>Historia: Fase 2</h3>
+      <p>Se redacta un texto sobre la Segunda Guerra Mundial, sus impactos sociales, económicos, políticos y ambientales, y la participación de México. Además, se realiza un presupuesto personal en tabla con porcentajes.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen historia fase 3.jpg" alt="14-25 de Abril" />
+      <h3>Historia: Fase 3</h3>
+      <p>Se elabora un reporte sobre los cambios actuales en el poder político y económico de México, destacando modelos económicos sustentables, identidad cultural y el impacto de la guerra comercial.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen Ecologia fase 1.jpg" alt="10 de Mayo" />
+      <h3>Ecología: Fase 1</h3>
+      <p>Proyecto para reducir la contaminación del agua en Reynosa, identificando fuentes contaminantes y promoviendo la participación comunitaria para mejorar la calidad y sostenibilidad del agua.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen Ecologia fase 2.jpg" alt="15 de Mayo" />
+      <h3>Ecología: Fase 2</h3>
+      <p>Implementación de acciones sustentables, con documentación en videos y fotos, y recopilación de resultados para un informe final.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen Filosofia fase 1.jpg" alt="23 de Mayo" />
+      <h3>Filosofía: Fase 1</h3>
+      <p>Reflexión sobre las enseñanzas de Aristóteles, Sócrates y Platón en lo social, familiar y escolar.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen filosofia fase 2.jpg" alt="22 de Junio" />
+      <h3>Filosofía: Fase 2</h3>
+      <p>Estudio de las ideas y visión del universo de Pico della Mirandola, Copérnico y Bruno, y su relevancia actual.</p>
+    </section>
+
+    <section class="event-info">
+      <img src="Imagenes/Imagen filosofia fase 3.jpg" alt="22 de Junio" />
+      <h3>Filosofía: Fase 3</h3>
+      <p>Postura filosófica personal sobre la identidad mexicana y metas en el ámbito laboral académico.</p>
+    </section>
+  </main>
+
+  <div class="table-container">
+    <h2 style="color:#f44336; margin-bottom: 15px; text-align:center;">
+      RESULTADOS DE PROPUESTAS DEL CUIDADO DEL AGUA (POR CONTAMINACIÓN)
+    </h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Ejes de Acción</th>
+          <th>Indicador</th>
+          <th>Cantidad estimada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Calidad de Agua</td>
+          <td>Fuentes de agua mejoradas</td>
+          <td>15 cuerpos de agua</td>
+        </tr>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Salud Pública</td>
+          <td>Reducción de casos de enfermedades hídricas</td>
+          <td>-40% de incidencia</td>
+        </tr>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Biodiversidad</td>
+          <td>Zonas protegidas y restauradas</td>
+          <td>10 áreas ecológicas</td>
+        </tr>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Uso responsable</td>
+          <td>Usuarios capacitados o ahorra en agua</td>
+          <td>2000 personas</td>
+        </tr>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Educación y conciencia</td>
+          <td>Actividades educativas realizadas</td>
+          <td>120 talleres/campañas</td>
+        </tr>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Participación comunitaria</td>
+          <td>Alianzas con actores locales</td>
+          <td>25 organizaciones involucradas</td>
+        </tr>
+        <tr>
+          <td style="background-color:#d35400; color:#fff;">Sostenibilidad</td>
+          <td>Proyectos comunitarios creados para continuar el trabajo</td>
+          <td>8 iniciativas sostenibles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>© 2025 Comunidad Estudiantil COBAT 17 - Página principal</p>
+  </footer>
+
+</body>
+</html>
